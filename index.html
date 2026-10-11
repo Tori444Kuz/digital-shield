@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цифровой щит: Оценка коррупционных рисков</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+<img src="logo.png" alt="Логотип Цифровой щит" style="max-width: 120px; display: block; margin: 0 auto 15px auto;">
+        <!-- Поменяли название в шапке по рекомендации -->
+        <h1>🛡️ Цифровой щит: оценка коррупционных рисков</h1>
+        <p class="subtitle">Инструмент предварительной экспресс-оценки коррупционных рисков для жителей Нижегородской области.</p>
+
+        <!-- Форма квиза -->
+        <div id="quiz-box">
+            
+            <!-- Кнопка быстрой помощи -->
+            <button onclick="showQuickHelp()" class="btn-help">❓ Я не знаю, что происходит. Мне кажется, что-то не так...</button>
+            <div id="quick-help-text" class="hidden-panel">
+                <p>Если вы столкнулись с непонятным давлением, искусственными задержками документов, намеками на «подарки» или требованиями оплатить бесплатные услуги — это повод зафиксировать ситуацию. Пройдите тест ниже, система поможет разложить всё по полочкам.</p>
+            </div>
+
+            <!-- Вопрос 1 -->
+            <div class="question-block">
+                <label>1. В какой сфере или учреждении происходит действие?</label>
+                <select id="q1">
+                    <option value="1">В колледже, вузе или школе</option>
+                    <option value="1">В больнице или медицинском центре</option>
+                    <option value="3">В органах власти, ведомствах, ГАИ / МВД</option>
+                    <option value="1">В другой сфере / Нет подходящего варианта</option>
+                </select>
+            </div>
+
+            <!-- Вопрос 2 -->
+            <div class="question-block">
+                <label>2. Каким образом на вас оказывается давление?</label>
+                <select id="q2">
+                    <option value="1">Намекают на «благодарность» или «подарок»</option>
+                    <option value="2">Искусственно затягивают выдачу документов / занижают оценки</option>
+                    <option value="3">Прямо требуют фиксированную сумму денег или услугу</option>
+                    <option value="2">Другой вариант давления / Свой случай</option>
+                </select>
+            </div>
+
+            <!-- Вопрос 3 -->
+            <div class="question-block">
+                <label>3. Кто выступает инициатором или посредником?</label>
+                <select id="q3">
+                    <option value="1">Другие студенты, знакомые («передать через кого-то»)</option>
+                    <option value="2">Технический персонал или рядовые сотрудники учреждения</option>
+                    <option value="3">Непосредственно должностное лицо (преподаватель, врач, начальник)</option>
+                    <option value="2">Лицо неизвестно / Другой посредник</option>
+                </select>
+            </div>
+
+            <!-- Вопрос 4 -->
+            <div class="question-block">
+                <label>4. Каков предполагаемый финансовый масштаб?</label>
+                <select id="q4">
+                    <option value="1">Символический подарок или мелкая сумма</option>
+                    <option value="2">Сумма от 3 000 до 50 000 рублей</option>
+                    <option value="3">Крупная сумма (свыше 50 000 рублей)</option>
+                    <option value="1">Затрудняюсь ответить / Нефинансовая услуга</option>
+                </select>
+            </div>
+
+            <!-- Вопрос 5 -->
+            <div class="question-block">
+                <label>5. Есть ли у вас какие-либо доказательства происходящего?</label>
+                <select id="q5">
+                    <option value="1">Нет, всё было сказано наедине без свидетелей</option>
+                    <option value="2">Есть переписка в мессенджерах, аудио или документы</option>
+                    <option value="3">Есть диктофонная запись прямого требования или свидетели</option>
+                </select>
+            </div>
+
+            <!-- Вопрос 6 -->
+            <div class="question-block">
+                <label>6. Каковы последствия в случае вашего отказа?</label>
+                <select id="q6">
+                    <option value="1">Просто испортятся отношения или затянется процесс</option>
+                    <option value="3">Угроза отчисления, увольнения или невыдачи важных документов</option>
+                    <option value="2">Другие последствия / Сложно оценить</option>
+                </select>
+            </div>
+
+            <!-- Свободная форма -->
+            <div class="question-block">
+                <label>Опишите ситуацию своими словами (если вашего случая нет в списке):</label>
+                <p class="warning-text">⚠️ В целях безопасности по 152-ФЗ категорически запрещено указывать в тексте свои ФИО, контакты, а также имена третьих лиц. Описывайте только суть проблемы [КонсультантПлюс].</p>
+                <textarea id="custom-text" placeholder="Например: Преподаватель отказывается принимать курсовую работу без покупки бумаги..." rows="4"></textarea>
+            </div>
+
+            <button onclick="calculateRisk()" class="btn-main">Оценить уровень риска</button>
+        </div>
+
+        <!-- Блок результатов -->
+        <div id="result-box" class="hidden">
+            <button onclick="resetQuiz()" class="btn-back" title="Вернуться назад">← Назад к вопросам</button>
+
+            <h2>Предварительная оценка ситуации:</h2>
+            <div id="risk-badge" class="badge"></div>
+            
+            <!-- Кнопка "Почему такой результат?" -->
+            <button onclick="toggleAnalysis()" class="btn-analysis">🔍 Почему система так решила?</button>
+            <div id="analysis-details" class="hidden-panel">
+                <p><strong>Условная модель оценки риска:</strong></p>
+                <div id="score-breakdown"></div>
+                <p class="disclaimer-mini">*Баллы используются для ориентировочной оценки математической модели риска и не определяют состав правонарушения.</p>
+            </div>
+
+            <p id="risk-text"></p>
+            
+            <!-- Новая кнопка перехода на гос. ресурс для усиления сайта -->
+            <a href="https://nobl.ru" target="_blank" class="btn-official-link">↗ Проверить официальную информацию Нижегородской области</a>
+            
+            <!-- Свободный текст пользователя -->
+            <div id="user-story-block" class="hidden">
+                <p><strong>Ваше описание ситуации:</strong></p>
+                <blockquote id="display-user-text"></blockquote>
+            </div>
+            
+            <!-- Голубенький блок пошагового плана действий -->
+            <div class="instruction-block">
+                <h3>📋 Ваш пошаговый план действий:</h3>
+                <div id="instruction-content"></div>
+            </div>
+
+            <!-- Контакты -->
+            <div class="contacts-block">
+                <h3>📞 Куда обратиться в Нижегородской области:</h3>
+                <ul>
+                    <li><strong>Прокуратура Нижегородской области:</strong> 
+                        <br>Адрес: г. Нижний Новгород, ул. Ижорская, 25 [epp.genproc.gov.ru]
+                        <br>Дежурный прокурор: <a href="tel:+78314618529">+7 (831) 461-85-29</a> [epp.genproc.gov.ru]
+                        <br>Телефон доверия: <a href="tel:+79036022220">+7 (903) 602-22-20</a> [epp.genproc.gov.ru]
+                        <br>Электронная приёмная: <a href="https://genproc.gov.ru" target="_blank">Перейти на сайт (proc_52)</a> [epp.genproc.gov.ru]
+                    </li>
+                    <li><strong>ГУ МВД России по Нижегородской области:</strong> 
+                        <br>Телефон доверия: <a href="tel:+78312686868">+7 (831) 268-68-68</a>
+                        <br>Дежурная часть: <a href="tel:+78312685379">+7 (831) 268-53-79</a>
+                    </li>
+                    <li><strong>Управление по профилактике коррупционных правонарушений Нижегородской области:</strong> 
+                        <br>Адрес: г. Нижний Новгород, ул. Фруктовая, д. 6 [anticor.nobl.ru]
+                        <br>Телефон приемной: <a href="tel:+78314318046">+7 (831) 431-80-46</a> [anticor.nobl.ru]
+                        <br>Официальный портал: <a href="https://nobl.ru" target="_blank">anticor.nobl.ru</a> [anticor.nobl.ru]
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Оговорка в самом низу экрана для зрелости проекта -->
+            <div class="legal-disclaimer">
+                <p><strong>Важно:</strong> Результат носит исключительно информационный характер и не является юридическим заключением. Окончательную правовую оценку дают только уполномоченные государственные органы.</p>
+            </div>
+
+            <div class="sources-block">
+                <p><strong>Источники информации:</strong> Проект опирается строго на официальные государственные ресурсы: Единый портал прокуратуры РФ (раздел Нижегородской области) [epp.genproc.gov.ru], Официальный портал исполнительных органов Нижегородской области (nobl.ru) [anticor.nobl.ru] и действующую нормативно-правовую базу Российской Федерации.</p>
+            </div>
+            
+            <button onclick="resetQuiz()" class="btn-secondary">Пройти заново</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

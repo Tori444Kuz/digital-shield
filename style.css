@@ -1,0 +1,251 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #F8F9FA;
+    color: #1E293B;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #FFFFFF;
+    max-width: 650px;
+    width: 100%;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(30, 41, 59, 0.06);
+}
+
+h1 {
+    font-size: 26px;
+    color: #0F172A;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: #64748B;
+    margin-bottom: 25px;
+}
+
+.btn-help {
+    background-color: #F1F5F9;
+    color: #475569;
+    border: 1px dashed #CBD5E1;
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.btn-help:hover {
+    background-color: #E2E8F0;
+}
+
+/* Скрытые панели по умолчанию */
+.hidden-panel {
+    display: none;
+    background-color: #F8FAFC;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.question-block {
+    margin-bottom: 22px;
+}
+
+.question-block label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+select, textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    border: 2px solid #E2E8F0;
+    border-radius: 8px;
+    background-color: #FFFFFF;
+    color: #1E293B;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+select:focus, textarea:focus {
+    border-color: #3B82F6;
+    outline: none;
+}
+
+.warning-text {
+    font-size: 13px;
+    color: #64748B;
+    background-color: #FFFBEB;
+    border-left: 4px solid #D97706;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius: 0 4px 4px 0;
+}
+
+.btn-main {
+    background-color: #059669;
+    color: #FFFFFF;
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-main:hover {
+    background-color: #047857;
+}
+
+.btn-back {
+    background: none;
+    border: none;
+    color: #64748B;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 10px 16px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.badge-green { background-color: #DCFCE7; color: #166534; }
+.badge-yellow { background-color: #FEF9C3; color: #854D0E; }
+.badge-red { background-color: #FEE2E2; color: #991B1B; }
+
+.btn-analysis {
+    display: block;
+    background-color: #F1F5F9;
+    border: 1px solid #E2E8F0;
+    color: #475569;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.btn-analysis:hover {
+    background-color: #E2E8F0;
+}
+
+#analysis-details {
+    border-left: 3px solid #CBD5E1;
+}
+
+#analysis-details ul { margin: 0; padding-left: 20px; }
+.disclaimer-mini { color: #94A3B8; font-size: 11px; margin-top: 8px; margin-bottom: 0; }
+
+/* ТОТ САМЫЙ ЯРКИЙ ГОЛУБЕНЬКИЙ БЛОК ДЛЯ ИНСТРУКЦИЙ (КАК СЛЕВА) */
+.instruction-block {
+    background-color: #E0F2FE; /* Нежно-голубой цвет */
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border-left: 4px solid #0284C7; /* Синий маркер безопасности */
+}
+
+.instruction-block h3 { font-size: 16px; margin-top: 0; margin-bottom: 10px; color: #0369A1; }
+.instruction-block ol, .instruction-block ul { padding-left: 20px; font-size: 14px; margin-bottom: 0; }
+.instruction-block li { margin-bottom: 8px; }
+
+.contacts-block { border-top: 1px solid #E2E8F0; margin-top: 20px; padding-top: 15px; }
+.contacts-block h3 { font-size: 16px; margin-bottom: 10px; }
+.contacts-block ul { list-style: none; padding-left: 0; font-size: 14px; }
+.contacts-block li { margin-bottom: 12px; }
+.contacts-block a { color: #2563EB; text-decoration: none; font-weight: 600; }
+.contacts-block a:hover { text-decoration: underline; }
+
+.legal-disclaimer {
+    background-color: #F8FAFC;
+    border-top: 2px solid #E2E8F0;
+    font-size: 12px;
+    color: #64748B;
+    padding: 12px;
+    margin-top: 20px;
+    border-radius: 6px;
+}
+
+.sources-block {
+    font-size: 11px;
+    color: #94A3B8;
+    margin-top: 10px;
+    line-height: 1.4;
+}
+
+.btn-secondary {
+    background-color: #E2E8F0;
+    color: #475569;
+    border: none;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.btn-secondary:hover { background-color: #CBD5E1; }
+
+#user-story-block {
+    background-color: #F8FAFC;
+    border-left: 4px solid #64748B;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border-radius: 0 8px 8px 0;
+}
+
+blockquote { margin: 0; font-style: italic; color: #0F172A; font-size: 14px; }
+
+.hidden { display: none !important; }
+
+@media (max-width: 480px) {
+    .container { padding: 20px; }
+    h1 { font-size: 22px; }
+}
+/* Кнопка ссылки на официальный гос. ресурс */
+.btn-official-link {
+    display: inline-block;
+    background-color: #F1F5F9;
+    color: #2563EB;
+    border: 1px solid #BFDBFE;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-official-link:hover {
+    background-color: #DBEAFE;
+    color: #1D4ED8;
+}
